@@ -1,0 +1,6 @@
+RewriteEngine On
+
+RewriteRule ^([^/\.]+)/([^/\.]+)/([^/\.]+)/([^/\.]+)/$ index.php?module=$1&action=$2&item=$3&page=$4 [L]
+RewriteRule ^([^/\.]+)/([^/\.]+)/([^/\.]+)/$ index.php?module=$1&action=$2&item=$3 [L]
+RewriteRule ^([^/\.]+)/([^/\.]+)/$ index.php?module=$1&action=$2 [L]
+RewriteRule ^([^/\.]+)/$ index.php?module=$1 [L]

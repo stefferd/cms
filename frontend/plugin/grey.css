@@ -1,0 +1,54 @@
+/* Plugin */
+#club-plugin{background:#fff;}
+#club-plugin .o-kcp-knkv-link, #club-plugin .o-kcp-knkv-link-back{background:#000;color:#fff;}
+#club-plugin .paging-link.back,#club-plugin .paging-link.home,#club-plugin .paging-link.forward, #club-plugin .button{background:#000; color:#fff;}
+#club-plugin .paging-link:hover, #club-plugin .o-kcp-knkv-link:hover, #club-plugin .o-kcp-knkv-link-back:hover, #club-plugin .button:hover{background:#888;color:#fff;}
+#club-plugin .paging-link.disabled{background-color:#ccc;cursor:not-allowed;}
+#club-plugin .paging-link.home{padding:3px 5px;}
+#club-plugin .paging{border-bottom:1px solid black;}
+
+/* Team link */
+#club-plugin .o-kcp-team-link {text-decoration:underline;cursor:pointer;}
+
+/* Programma */
+#club-plugin .group-title{background:#ccc; border-bottom:1px solid black;border-top:1px solid black;}
+#club-plugin .list-item {border-bottom:1px solid #ccc;}
+#club-plugin .list-item:hover{background:#eee;}
+
+/* Standen */
+#club-plugin .standen tr{border-bottom:1px solid #ccc;}
+#club-plugin .standen tr td:last-child{border-bottom:none;}
+#club-plugin .standen tr th{background:#ddd;border-bottom:1px solid #000;}
+#club-plugin .standen tr.active{background:#eee;}
+#club-plugin .standen tr:hover{background:#eee;}
+#club-plugin .standing_number{border-bottom:1px solid #ccc;}
+#club-plugin .standing_name{border-bottom:1px solid #ccc;}
+#club-plugin .results_week_inner{background:#ccc;border-top:1px solid black;}
+#club-plugin select.o-switch-sport{background:black;color:#fff;}
+
+/* Teams */
+#club-plugin .head{background:#ccc;border-bottom:1px solid black;border-top:1px solid black;font-weight:bold;}
+#club-plugin .show_team{border-bottom:1px solid #ccc;color:#000;}
+#club-plugin .show_team:hover{color:#000;}
+#club-plugin .show_team:hover{background:#eee;}
+#club-plugin .o-kcp-content-block h2{border-bottom:1px solid black;background:#000;color:#fff;}
+#club-plugin .show_team_program,#club-plugin .show_team_results,#club-plugin .show_team_standing{background:#ccc;color:#000;border:1px solid #000;}
+#club-plugin .show_team_program.active,#club-plugin .show_team_results.active,#club-plugin .show_team_standing.active{background:#000;color:#fff;}
+#club-plugin .show_team_program:hover,#club-plugin .show_team_results:hover,#club-plugin .show_team_standing:hover{color:#fff; background:#000;}
+#club-plugin .o-kcp-content-block li.group-title-teams{border-top:0px solid #000;background:#ccc;border-bottom:1px solid black;border-top:0px solid black;}
+#club-plugin .o-standing-headline{background:#ddd;}
+#club-plugin .o-standing-headline.o-standing-line:hover{background:#ddd;}
+#club-plugin .o-standing-line{border-bottom:1px solid #ccc;}
+#club-plugin .o-standing-line:hover, #club-plugin .o-standing-line.team-line{background:#eee;}
+#club-plugin .o-standing .o-standing-headline{border-bottom:1px solid #000;}
+#club-plugin ul.o-kcp-team-tabs{border-bottom:1px solid #000;}
+#club-plugin .o-overview ul li.group-title-teams{border-top:1px #000 solid;}
+#club-plugin .o-overview ul li.group-title-teams:first-child{border-top:0px #000 solid;border-bottom:1px #000 solid;}
+
+/* Loader */
+#club-plugin .o-kcp-loader{background:#fff;}
+
+/* Tabs*/
+#club-plugin .o-kcp-tabs,#club-plugin  .o-kcp-team-tabs {border-bottom: 1px solid #000;}
+#club-plugin .o-kcp-tabs .o-kcp-tab-item{border-right:1px solid #000;}
+#club-plugin .o-kcp-tabs .o-kcp-tab-item.active,#club-plugin .o-kcp-tabs .o-kcp-tab-item:hover{background:#ccc;}
