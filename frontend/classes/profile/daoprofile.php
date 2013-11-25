@@ -18,24 +18,24 @@ class DaoProfile implements IntDaoProfile
     public function create(Profile $profile)
     {
         $this->checkTableIsPresent();
-        $profile->setId($this->getMaxId());
+        $profile->id = $this->getMaxId();
 
         $db = new Db();
         if ($smtm = $db->mysqli->prepare('INSERT INTO profile SET name = ?, lastname = ?, emailaddress = ?, password = ?, birthday = ?, created = ?, id = ?')) {
             $smtm->bind_param('ssssssi',
-                $profile->getName(),
-                $profile->getLastname(),
-                $profile->getEmailaddress(),
-                $profile->getPassword(),
-                $profile->getBirthday(),
+                $profile->name,
+                $profile->lastname,
+                $profile->emailaddress,
+                $profile->password,
+                $profile->birthday,
                 time(),
-                $profile->getId()
+                $profile->id
             );
             $smtm->execute();
             $smtm->close();
         }
         $db->mysqli->close();
-        return $profile->getId();
+        return $profile->id;
     }
 
     public function save(Profile $profile)
@@ -43,14 +43,14 @@ class DaoProfile implements IntDaoProfile
         $db = new Db();
         if ($smtm = $db->mysqli->prepare('UPDATE profile SET name = ?, lastname = ?, emailaddress = ?, birthday = ?, updated = ?, loggedin = ?, active = ? WHERE id = ?')) {
             $smtm->bind_param('ssssssii',
-                $profile->getName(),
-                $profile->getLastname(),
-                $profile->getEmailaddress(),
-                $profile->getBirthday(),
+                $profile->name,
+                $profile->lastname,
+                $profile->emailaddress,
+                $profile->birthday,
                 time(),
-                $profile->getLoggedIn(),
-                $profile->getActive(),
-                $profile->getId()
+                $profile->loggedIn,
+                $profile->active,
+                $profile->id
             );
             $smtm->execute();
             $smtm->close();
@@ -67,15 +67,15 @@ class DaoProfile implements IntDaoProfile
             $smtm->execute();
             $smtm->bind_result($id, $name, $lastname, $emailaddress, $password, $birthday, $created, $updated, $loggedin);
             while ($smtm->fetch()) {
-                $profile->setId($id);
-                $profile->setName($name);
-                $profile->setLastname($lastname);
-                $profile->setEmailaddress($emailaddress);
-                $profile->setPassword($password);
-                $profile->setBirthday($birthday);
-                $profile->setCreated($created);
-                $profile->setUpdated($updated);
-                $profile->setLoggedIn($loggedin);
+                $profile->id = $id;
+                $profile->name = $name;
+                $profile->lastname = $lastname;
+                $profile->emailaddress = $emailaddress;
+                $profile->password = $password;
+                $profile->birthday = $birthday;
+                $profile->created = $created;
+                $profile->updated = $updated;
+                $profile->loggedIn = $loggedin;
             }
             $db->mysqli->close();
         }
@@ -102,15 +102,15 @@ class DaoProfile implements IntDaoProfile
             $smtm->bind_result($id, $name, $lastname, $emailaddress, $password, $birthday, $created, $updated, $loggedin);
             while ($smtm->fetch()) {
                 $profile = new Profile();
-                $profile->setId($id);
-                $profile->setName($name);
-                $profile->setLastname($lastname);
-                $profile->setEmailaddress($emailaddress);
-                $profile->setPassword($password);
-                $profile->setBirthday($birthday);
-                $profile->setCreated($created);
-                $profile->setUpdated($updated);
-                $profile->setLoggedIn($loggedin);
+                $profile->id = $id;
+                $profile->name = $name;
+                $profile->lastname = $lastname;
+                $profile->emailaddress = $emailaddress;
+                $profile->password = $password;
+                $profile->birthday = $birthday;
+                $profile->created = $created;
+                $profile->updated = $updated;
+                $profile->loggedIn = $loggedin;
                 array_push($entries, $profile);
             }
             $db->mysqli->close();
@@ -128,15 +128,15 @@ class DaoProfile implements IntDaoProfile
             $smtm->execute();
             $smtm->bind_result($id, $name, $lastname, $emailaddress, $password, $birthday, $created, $updated, $loggedin);
             while ($smtm->fetch()) {
-                $profile->setId($id);
-                $profile->setName($name);
-                $profile->setLastname($lastname);
-                $profile->setEmailaddress($emailaddress);
-                $profile->setPassword($password);
-                $profile->setBirthday($birthday);
-                $profile->setCreated($created);
-                $profile->setUpdated($updated);
-                $profile->setLoggedIn($loggedin);
+                $profile->id = $id;
+                $profile->name = $name;
+                $profile->lastname = $lastname;
+                $profile->emailaddress = $emailaddress;
+                $profile->password = $password;
+                $profile->birthday = $birthday;
+                $profile->created = $created;
+                $profile->updated = $updated;
+                $profile->loggedIn = $loggedin;
             }
             $db->mysqli->close();
         }

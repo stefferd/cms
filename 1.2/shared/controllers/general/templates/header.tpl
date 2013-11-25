@@ -11,6 +11,9 @@
         <link media="screen" rel="stylesheet" href="{$url}../1.2/shared/libs/bootstrap/bootstrap-responsive.min.css" type="text/css" />
         <link media="screen" rel="stylesheet" href="{$url}../1.2/shared/libs/bootstrap/bootstrap.min.css" type="text/css" />
         <script language="javascript" type="text/javascript" src="{$url}../1.2/shared/libs/bootstrap/bootstrap.min.js"></script>
+        <!-- Lightbox -->
+        <link media="screen" rel="stylesheet" href="{$url}../1.2/shared/libs/lightbox/jquery.lightbox-0.5.css" type="text/css" />
+        <script language="javascript" type="text/javascript" src="{$url}../1.2/shared/libs/lightbox/jquery.lightbox-0.5.min.js"></script>
     </head>
     <body>
         <div class="navbar navbar-fixed-top">

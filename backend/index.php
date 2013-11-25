@@ -23,6 +23,10 @@
     include(newsletter_controller . 'libs/newsletter.php');
     include(catalog_controller . 'libs/setup.php');
     include(catalog_controller . 'libs/catalog.php');
+    include(newsletterplus_controller . 'libs/setup.php');
+    include(newsletterplus_controller . 'libs/newsletterplus.php');
+    include(note_controller . 'libs/setup.php');
+    include(note_controller . 'libs/notes.php');
 
     $smarty = new Smarty();
     $smarty->setTemplateDir(general_controllers . 'templates');
@@ -214,6 +218,53 @@
                         break;
                 }
                 break;
+            case 'newsletter-plus':
+                $cnewsletterplus = new NewsletterPlusController();
+                switch($_action) {
+                    case 'prepare':
+                        $cnewsletterplus->selectImage($_item);
+                        break;
+                    case 'send':
+                        $images = '';
+                        if (isset($_POST)) {
+                            $images = $_POST['imagesForNewsletter'];
+                        }
+                        $cnewsletterplus->prepareNewsletter('info@vandenbergmultimedia.nl', $_item, $images);
+                        break;
+                    case 'subscribers':
+                        if (!empty($_item) && $_item != 1) {
+                            $cnewsletterplus->subscribers($cnewsletterplus->getSubscribers($_item), $_item);
+                        } else {
+                            $cnewsletterplus->subscribers($cnewsletterplus->getSubscribers(1), 1);
+                        }
+                        break;
+                    case 'search-subscribers':
+                        $cnewsletterplus->subscribers($cnewsletterplus->searchSubscribers($_POST['search']), 1);
+                        break;
+                    case 'import':
+                        if (empty($_FILES)) {
+                            $cnewsletterplus->prepareImport();
+                        } else {
+                            echo $cnewsletterplus->import($_FILES);
+                        }
+                        break;
+                    case 'subscriber-delete':
+                        $cnewsletterplus->deleteSubscriber($_item);
+                        $cnewsletterplus->subscribers($cnewsletterplus->getSubscribers());
+                        break;
+                    case 'save-subscriber':
+                        $cnewsletterplus->saveSubscriber($_POST);
+                        $cnewsletterplus->subscribers($cnewsletterplus->getSubscribers());
+                        break;
+                    case 'show':
+                        $cnewsletterplus->show($_item);
+                        break;
+                    case 'view':
+                    default:
+                        $cnewsletterplus->view();
+                        break;
+                }
+                break;
             case 'news':
                 $cnews = new NewsController();
                 switch($_action) {
@@ -259,9 +310,38 @@
                     case 'edit':
                         $ccatalog->edit($_POST, $_item, 'car');
                         break;
+                    case 'delete':
+                        $ccatalog->remove($_item);
+                        break;
                     case 'view':
                     default:
                         $ccatalog->view($ccatalog->getEntries());
+                        break;
+                }
+                break;
+            case 'note':
+                $cnotes = new NotesController();
+                switch($_action) {
+                    case 'create':
+                        $cnotes->create($_POST, $_item);
+                        break;
+                    case 'save':
+                        $cnotes->save($_POST);
+                        $cnotes->view($cnotes->getEntries());
+                        break;
+                    case 'update':
+                        $cnotes->update($_POST, $_item);
+                        $cnotes->view($cnotes->getEntries());
+                        break;
+                    case 'edit':
+                        $cnotes->edit($_POST, $_item);
+                        break;
+                    case 'delete':
+                        $cnotes->remove($_item);
+                        break;
+                    case 'view':
+                    default:
+                        $cnotes->view($cnotes->getEntries());
                         break;
                 }
                 break;

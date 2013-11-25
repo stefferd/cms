@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2012-12-28 14:53:31
+<?php /* Smarty version Smarty-3.1.8, created on 2013-01-07 22:49:18
          compiled from "../1.2/shared/controllers/general/templates/header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:17344780015025523c1a2618-19854208%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '46c4ad4ba92b7355d47e6e4ea78a7474a819cafe' => 
     array (
       0 => '../1.2/shared/controllers/general/templates/header.tpl',
-      1 => 1356702806,
+      1 => 1357595180,
       2 => 'file',
     ),
   ),
@@ -52,6 +52,11 @@ javascript/default-controller.js"></script>
 ../1.2/shared/libs/bootstrap/bootstrap.min.css" type="text/css" />
         <script language="javascript" type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['url']->value;?>
 ../1.2/shared/libs/bootstrap/bootstrap.min.js"></script>
+        <!-- Lightbox -->
+        <link media="screen" rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['url']->value;?>
+../1.2/shared/libs/lightbox/jquery.lightbox-0.5.css" type="text/css" />
+        <script language="javascript" type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['url']->value;?>
+../1.2/shared/libs/lightbox/jquery.lightbox-0.5.min.js"></script>
     </head>
     <body>
         <div class="navbar navbar-fixed-top">

@@ -20,3 +20,16 @@ header, section, footer, nav {
     max-width: 300px;
     padding: 19px 29px 29px;
 }
+
+.thumbnails .mainimage .thumbnail {
+    background-color: #EFEFEF;
+    border: 1px solid #CCCCCD;
+}
+
+.selected .thumbnail {
+    background-color: #7BC978;
+}
+
+fieldset .row .thumbnail {
+    margin-bottom: 20px;
+}

@@ -32,20 +32,20 @@ class DaoSnippets implements IntDaoSnippets
         $db = new Db();
         if ($smtm = $db->mysqli->prepare('INSERT INTO snippet SET id = ?, uniqueid = ?, title = ?, text = ?, active = ?, created = ?, user = ?, version = ?')) {
             $smtm->bind_param('isssisii',
-                $snippet->getId(),
-                $snippet->getUniqueid(),
-                $snippet->getTitle(),
-                $snippet->getText(),
-                $snippet->getActive(),
+                $snippet->id,
+                $snippet->uniqueid,
+                $snippet->title,
+                $snippet->text,
+                $snippet->active,
                 time(),
-                $snippet->getUser(),
-                $snippet->getVersion()
+                $snippet->user,
+                $snippet->version
             );
             $smtm->execute();
             $smtm->close();
         }
         $db->mysqli->close();
-        return $snippet->getId();
+        return $snippet->id;
     }
 
     public function update(Snippet $snippet)
@@ -53,14 +53,14 @@ class DaoSnippets implements IntDaoSnippets
         $db = new Db();
         if ($smtm = $db->mysqli->prepare('UPDATE snippet SET uniqueid = ?, title = ?, text = ?, active = ?, updated = ?, user = ?, version = ? WHERE id = ?')) {
             $smtm->bind_param('sssisiii',
-                $snippet->getUniqueid(),
-                $snippet->getTitle(),
-                $snippet->getText(),
-                $snippet->getActive(),
+                $snippet->uniqueid,
+                $snippet->title,
+                $snippet->text,
+                $snippet->active,
                 time(),
-                $snippet->getUser(),
-                $snippet->getVersion(),
-                $snippet->getId()
+                $snippet->user,
+                $snippet->version,
+                $snippet->id
             );
             $smtm->execute();
             $smtm->close();
@@ -76,15 +76,15 @@ class DaoSnippets implements IntDaoSnippets
             $smtm->execute();
             $smtm->bind_result($id, $uniqueid, $title, $text, $active, $created ,$updated, $user, $version);
             while ($smtm->fetch()) {
-                $snippet->setId($id);
-                $snippet->setUniqueid($uniqueid);
-                $snippet->setTitle($title);
-                $snippet->setText($text);
-                $snippet->setActive($active);
-                $snippet->setCreated($created);
-                $snippet->setUpdated($updated);
-                $snippet->setUser($user);
-                $snippet->setVersion($version);
+                $snippet->id = $id;
+                $snippet->uniqueid = $uniqueid;
+                $snippet->title = $title;
+                $snippet->text = $text;
+                $snippet->active = $active;
+                $snippet->created = $created;
+                $snippet->updated = $updated;
+                $snippet->user = $user;
+                $snippet->version = $version;
             }
             $db->mysqli->close();
         }
@@ -99,15 +99,15 @@ class DaoSnippets implements IntDaoSnippets
             $smtm->bind_result($id, $uniqueid, $title, $text, $active, $created ,$updated, $user, $version);
             while ($smtm->fetch()) {
                 $snippet = new Snippet();
-                $snippet->setId($id);
-                $snippet->setUniqueid($uniqueid);
-                $snippet->setTitle($title);
-                $snippet->setText($text);
-                $snippet->setActive($active);
-                $snippet->setCreated($created);
-                $snippet->setUpdated($updated);
-                $snippet->setUser($user);
-                $snippet->setVersion($version);
+                $snippet->id = $id;
+                $snippet->uniqueid = $uniqueid;
+                $snippet->title = $title;
+                $snippet->text = $text;
+                $snippet->active = $active;
+                $snippet->created = $created;
+                $snippet->updated = $updated;
+                $snippet->user = $user;
+                $snippet->version = $version;
                 array_push($entries, $snippet);
             }
             $db->mysqli->close();
@@ -123,15 +123,15 @@ class DaoSnippets implements IntDaoSnippets
             $smtm->execute();
             $smtm->bind_result($id, $uniqueid, $title, $text, $active, $created ,$updated, $user, $version);
             while ($smtm->fetch()) {
-                $snippet->setId($id);
-                $snippet->setUniqueid($uniqueid);
-                $snippet->setTitle($title);
-                $snippet->setText($text);
-                $snippet->setActive($active);
-                $snippet->setCreated($created);
-                $snippet->setUpdated($updated);
-                $snippet->setUser($user);
-                $snippet->setVersion($version);
+                $snippet->id = $id;
+                $snippet->uniqueid = $uniqueid;
+                $snippet->title = $title;
+                $snippet->text = $text;
+                $snippet->active = $active;
+                $snippet->created = $created;
+                $snippet->updated = $updated;
+                $snippet->user = $user;
+                $snippet->version = $version;
             }
             $db->mysqli->close();
         }

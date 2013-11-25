@@ -7,8 +7,8 @@
     {foreach $data as $newsletter}
         <li>
             <div>
-                <span>{$newsletter->getCreated()|date_format:"%d-%m-%Y"} - </span>
-                <a href="{$cms}{$newsletter->getDocument()}" target="_blank" title="{$newsletter->getTitle()}">{$newsletter->getTitle()}</a>
+                <span>{$newsletter->created|date_format:"%d-%m-%Y"} - </span>
+                <a href="{$cms}{$newsletter->focument}" target="_blank" title="{$newsletter->title}">{$newsletter->title}</a>
             </div>
         </li>
         {counter}

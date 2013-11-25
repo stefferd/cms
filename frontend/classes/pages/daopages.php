@@ -29,30 +29,30 @@ class DaoPages implements IntDaoPages
     public function save(Pages $pages)
     {
         $this->checkTableIsPresent();
-        $pages->setId($this->getMaxId());
+        $pages->id = $this->getMaxId();
 
         $db = new Db();
         if ($smtm = $db->mysqli->prepare('INSERT INTO pages SET id = ?, uniqueid = ?, title = ?, text = ?, metatitle = ?,
             metadescription = ?, keywords = ?, active = ?, created = ?, user = ?, version = ?, parent = ?')) {
             $smtm->bind_param('issssssisiii',
-                $pages->getId(),
-                $pages->getUniqueid(),
-                $pages->getTitle(),
-                $pages->getText(),
-                $pages->getMetatitle(),
-                $pages->getMetadescription(),
-                $pages->getKeywords(),
-                $pages->getActive(),
+                $pages->id,
+                $pages->uniqueid,
+                $pages->title,
+                $pages->text,
+                $pages->metatitle,
+                $pages->metadescription,
+                $pages->keywords,
+                $pages->active,
                 time(),
-                $pages->getUser(),
-                $pages->getVersion(),
-                $pages->getParent()
+                $pages->user,
+                $pages->version,
+                $pages->parent
             );
             $smtm->execute();
             $smtm->close();
         }
         $db->mysqli->close();
-        return $pages->getId();
+        return $pages->id;
     }
 
     public function update(Pages $pages)
@@ -61,18 +61,18 @@ class DaoPages implements IntDaoPages
         if ($smtm = $db->mysqli->prepare('UPDATE pages SET uniqueid = ?, title = ?, text = ?, metatitle = ?,
             metadescription = ?, keywords = ?, active = ?, updated = ?, user = ?, version = ?, parent = ? WHERE id = ?')) {
             $smtm->bind_param('ssssssisiiii',
-                $pages->getUniqueid(),
-                $pages->getTitle(),
-                $pages->getText(),
-                $pages->getMetatitle(),
-                $pages->getMetadescription(),
-                $pages->getKeywords(),
-                $pages->getActive(),
+                $pages->uniqueid,
+                $pages->title,
+                $pages->text,
+                $pages->metatitle,
+                $pages->metadescription,
+                $pages->keywords,
+                $pages->active,
                 time(),
-                $pages->getUser(),
-                $pages->getVersion(),
-                $pages->getParent(),
-                $pages->getId()
+                $pages->user,
+                $pages->version,
+                $pages->parent,
+                $pages->id
             );
             $smtm->execute();
             $smtm->close();
@@ -88,19 +88,19 @@ class DaoPages implements IntDaoPages
             $smtm->execute();
             $smtm->bind_result($id, $uniqueid, $title, $text, $metatitle, $metadescription, $keywords, $active, $created ,$updated, $user, $version, $parent);
             while ($smtm->fetch()) {
-                $pages->setId($id);
-                $pages->setUniqueid($uniqueid);
-                $pages->setTitle($title);
-                $pages->setText($text);
-                $pages->setMetatitle($metatitle);
-                $pages->setMetadescription($metadescription);
-                $pages->setKeywords($keywords);
-                $pages->setActive($active);
-                $pages->setCreated($created);
-                $pages->setUpdated($updated);
-                $pages->setUser($user);
-                $pages->setVersion($version);
-                $pages->setParent($parent);
+                $pages->id = $id;
+                $pages->uniqueid = $uniqueid;
+                $pages->title = $title;
+                $pages->text = $text;
+                $pages->metatitle = $metatitle;
+                $pages->metadescription = $metadescription;
+                $pages->keywords = $keywords;
+                $pages->active = $active;
+                $pages->created = $created;
+                $pages->updated = $updated;
+                $pages->user = $user;
+                $pages->version = $version;
+                $pages->parent = $parent;
             }
             $db->mysqli->close();
         }
@@ -115,19 +115,19 @@ class DaoPages implements IntDaoPages
             $smtm->bind_result($id, $uniqueid, $title, $text, $metatitle, $metadescription, $keywords, $active, $created ,$updated, $user, $version, $parent);
             while ($smtm->fetch()) {
                 $pages = new Pages();
-                $pages->setId($id);
-                $pages->setUniqueid($uniqueid);
-                $pages->setTitle($title);
-                $pages->setText($text);
-                $pages->setMetatitle($metatitle);
-                $pages->setMetadescription($metadescription);
-                $pages->setKeywords($keywords);
-                $pages->setActive($active);
-                $pages->setCreated($created);
-                $pages->setUpdated($updated);
-                $pages->setUser($user);
-                $pages->setVersion($version);
-                $pages->setParent($parent);
+                $pages->id = $id;
+                $pages->uniqueid = $uniqueid;
+                $pages->title = $title;
+                $pages->text = $text;
+                $pages->metatitle = $metatitle;
+                $pages->metadescription = $metadescription;
+                $pages->keywords = $keywords;
+                $pages->active = $active;
+                $pages->created = $created;
+                $pages->updated = $updated;
+                $pages->user = $user;
+                $pages->version = $version;
+                $pages->parent = $parent;
                 array_push($entries, $pages);
             }
             $db->mysqli->close();
@@ -144,13 +144,13 @@ class DaoPages implements IntDaoPages
             $smtm->bind_result($id, $uniqueid, $title, $active, $created ,$updated, $parent);
             while ($smtm->fetch()) {
                 $pages = new Pages();
-                $pages->setId($id);
-                $pages->setUniqueid($uniqueid);
-                $pages->setTitle($title);
-                $pages->setActive($active);
-                $pages->setCreated($created);
-                $pages->setUpdated($updated);
-                $pages->setParent($parent);
+                $pages->id = $id;
+                $pages->uniqueid = $uniqueid;
+                $pages->title = $title;
+                $pages->active = $active;
+                $pages->created = $created;
+                $pages->updated = $updated;
+                $pages->parent = $parent;
                 array_push($entries, $pages);
             }
             $db->mysqli->close();
@@ -168,13 +168,13 @@ class DaoPages implements IntDaoPages
             $smtm->bind_result($id, $uniqueid, $title, $active, $created ,$updated, $parent);
             while ($smtm->fetch()) {
                 $pages = new Pages();
-                $pages->setId($id);
-                $pages->setUniqueid($uniqueid);
-                $pages->setTitle($title);
-                $pages->setActive($active);
-                $pages->setCreated($created);
-                $pages->setUpdated($updated);
-                $pages->setParent($parent);
+                $pages->id  = $id;
+                $pages->uniqueid = $uniqueid;
+                $pages->title = $title;
+                $pages->active = $active;
+                $pages->created = $created;
+                $pages->updated = $updated;
+                $pages->parent = $parent;
                 array_push($entries, $pages);
             }
             $db->mysqli->close();
@@ -204,19 +204,19 @@ class DaoPages implements IntDaoPages
             $smtm->execute();
             $smtm->bind_result($id, $uniqueid, $title, $text, $metatitle, $metadescription, $keywords, $active, $created ,$updated, $user, $version, $parent);
             while ($smtm->fetch()) {
-                $pages->setId($id);
-                $pages->setUniqueid($uniqueid);
-                $pages->setTitle($title);
-                $pages->setText($text);
-                $pages->setMetatitle($metatitle);
-                $pages->setMetadescription($metadescription);
-                $pages->setKeywords($keywords);
-                $pages->setActive($active);
-                $pages->setCreated($created);
-                $pages->setUpdated($updated);
-                $pages->setUser($user);
-                $pages->setVersion($version);
-                $pages->setParent($parent);
+                $pages->id = $id;
+                $pages->uniqueid = $uniqueid;
+                $pages->title = $title;
+                $pages->text = $text;
+                $pages->metatitle = $metatitle;
+                $pages->metadescription = $metadescription;
+                $pages->keywords = $keywords;
+                $pages->active = $active;
+                $pages->created = $created;
+                $pages->updated = $updated;
+                $pages->user = $user;
+                $pages->version = $version;
+                $pages->parent = $parent;
             }
             $db->mysqli->close();
         }

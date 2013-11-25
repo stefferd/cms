@@ -29,22 +29,22 @@ class DaoGuestbook implements IntDaoGuestbook
     public function save(Guestbook $guestbook)
     {
         $this->checkTableIsPresent();
-        $guestbook->setId($this->getMaxId());
+        $guestbook->id = $this->getMaxId();
 
         $db = new Db();
         if ($smtm = $db->mysqli->prepare('INSERT INTO guestbook SET id = ?, title = ?, text = ?, active = ?, created = ?')) {
             $smtm->bind_param('issis',
-                $guestbook->getId(),
-                $guestbook->getTitle(),
-                $guestbook->getText(),
-                $guestbook->getActive(),
+                $guestbook->id,
+                $guestbook->title,
+                $guestbook->text,
+                $guestbook->active,
                 time()
             );
             $smtm->execute();
             $smtm->close();
         }
         $db->mysqli->close();
-        return $guestbook->getId();
+        return $guestbook->id;
     }
 
     public function update(Guestbook $guestbook)
@@ -52,10 +52,10 @@ class DaoGuestbook implements IntDaoGuestbook
         $db = new Db();
         if ($smtm = $db->mysqli->prepare('UPDATE guestbook SET title = ?, text = ?, active = ? WHERE id = ?')) {
             $smtm->bind_param('ssii',
-                $guestbook->getTitle(),
-                $guestbook->getText(),
-                $guestbook->getActive(),
-                $guestbook->getId()
+                $guestbook->title,
+                $guestbook->text,
+                $guestbook->active,
+                $guestbook->id
             );
             $smtm->execute();
             $smtm->close();
@@ -71,11 +71,11 @@ class DaoGuestbook implements IntDaoGuestbook
             $smtm->execute();
             $smtm->bind_result($id, $title, $text, $active, $created);
             while ($smtm->fetch()) {
-                $guestbook->setId($id);
-                $guestbook->setTitle($title);
-                $guestbook->setText($text);
-                $guestbook->setActive($active);
-                $guestbook->setCreated($created);
+                $guestbook->id = $id;
+                $guestbook->title = $title;
+                $guestbook->text = $text;
+                $guestbook->active = $active;
+                $guestbook->created = $created;
             }
             $db->mysqli->close();
         }
@@ -94,11 +94,11 @@ class DaoGuestbook implements IntDaoGuestbook
             $smtm->bind_result($id, $title, $text, $active, $created);
             while ($smtm->fetch()) {
                 $guestbook = new Guestbook();
-                $guestbook->setId($id);
-                $guestbook->setTitle($title);
-                $guestbook->setText($text);
-                $guestbook->setActive($active);
-                $guestbook->setCreated($created);
+                $guestbook->id = $id;
+                $guestbook->title = $title;
+                $guestbook->text = $text;
+                $guestbook->active = $active;
+                $guestbook->created= $created;
                 array_push($entries, $guestbook);
             }
             $db->mysqli->close();

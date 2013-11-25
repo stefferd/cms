@@ -16,6 +16,7 @@ define('theme', 'theme/default/');
 define('version', '1.1');
 
 define('classes', '../shared/classes/');
+define('controllers', '../shared/controllers/');
 define('smarty_dir', '../shared/libs/smarty/');
 
 define('general_controllers', '../shared/controllers/general/');

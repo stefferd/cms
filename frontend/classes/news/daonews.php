@@ -29,23 +29,23 @@ class DaoNews implements IntDaoNews
     public function save(News $news)
     {
         $this->checkTableIsPresent();
-        $news->setId($this->getMaxId());
+        $news->id = $this->getMaxId();
 
         $db = new Db();
         if ($smtm = $db->mysqli->prepare('INSERT INTO news SET id = ?, title = ?, text = ?, active = ?, created = ?, user = ?')) {
             $smtm->bind_param('issisi',
-                $news->getId(),
-                $news->getTitle(),
-                $news->getText(),
-                $news->getActive(),
+                $news->id,
+                $news->title,
+                $news->text,
+                $news->active,
                 time(),
-                $news->getUser()
+                $news->user
             );
             $smtm->execute();
             $smtm->close();
         }
         $db->mysqli->close();
-        return $news->getId();
+        return $news->id;
     }
 
     public function update(News $news)
@@ -53,12 +53,12 @@ class DaoNews implements IntDaoNews
         $db = new Db();
         if ($smtm = $db->mysqli->prepare('UPDATE news SET title = ?, text = ?, active = ?, updated = ?, user = ? WHERE id = ?')) {
             $smtm->bind_param('ssisii',
-                $news->getTitle(),
-                $news->getText(),
-                $news->getActive(),
+                $news->title,
+                $news->text,
+                $news->active,
                 time(),
-                $news->getUser(),
-                $news->getId()
+                $news->user,
+                $news->id
             );
             $smtm->execute();
             $smtm->close();
@@ -74,13 +74,13 @@ class DaoNews implements IntDaoNews
             $smtm->execute();
             $smtm->bind_result($id, $title, $text, $active, $created ,$updated, $user);
             while ($smtm->fetch()) {
-                $news->setId($id);
-                $news->setTitle($title);
-                $news->setText($text);
-                $news->setActive($active);
-                $news->setCreated($created);
-                $news->setUpdated($updated);
-                $news->setUser($user);
+                $news->id = $id;
+                $news->title = $title;
+                $news->text = $text;
+                $news->active = $active;
+                $news->created = $created;
+                $news->updated = $updated;
+                $news->user = $user;
             }
             $db->mysqli->close();
         }
@@ -99,13 +99,13 @@ class DaoNews implements IntDaoNews
             $smtm->bind_result($id, $title, $text, $active, $created ,$updated, $user);
             while ($smtm->fetch()) {
                 $news = new News();
-                $news->setId($id);
-                $news->setTitle($title);
-                $news->setText($text);
-                $news->setActive($active);
-                $news->setCreated($created);
-                $news->setUpdated($updated);
-                $news->setUser($user);
+                $news->id = $id;
+                $news->title = $title;
+                $news->text = $text;
+                $news->active = $active;
+                $news->created = $created;
+                $news->updated = $updated;
+                $news->user = $user;
                 array_push($entries, $news);
             }
             $db->mysqli->close();

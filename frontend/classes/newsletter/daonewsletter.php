@@ -29,24 +29,24 @@ class DaoNewsletter implements IntDaoNewsletter
     public function save(Newsletter $newsletter)
     {
         $this->checkTableIsPresent();
-        $newsletter->setId($this->getMaxId());
+        $newsletter->id = $this->getMaxId();
 
         $db = new Db();
         if ($smtm = $db->mysqli->prepare('INSERT INTO newsletter SET id = ?, title = ?, text = ?, document = ?, active = ?, created = ?, user = ?')) {
             $smtm->bind_param('isssisi',
-                $newsletter->getId(),
-                $newsletter->getTitle(),
-                $newsletter->getText(),
-                $newsletter->getDocument(),
-                $newsletter->getActive(),
+                $newsletter->id,
+                $newsletter->title,
+                $newsletter->text,
+                $newsletter->document,
+                $newsletter->active,
                 time(),
-                $newsletter->getUser()
+                $newsletter->user
             );
             $smtm->execute();
             $smtm->close();
         }
         $db->mysqli->close();
-        return $newsletter->getId();
+        return $newsletter->id;
     }
 
     public function update(Newsletter $newsletter)
@@ -54,13 +54,13 @@ class DaoNewsletter implements IntDaoNewsletter
         $db = new Db();
         if ($smtm = $db->mysqli->prepare('UPDATE newsletter SET title = ?, text = ?, document = ?, active = ?, updated = ?, user = ? WHERE id = ?')) {
             $smtm->bind_param('sssisii',
-                $newsletter->getTitle(),
-                $newsletter->getText(),
-                $newsletter->getdocument(),
-                $newsletter->getActive(),
+                $newsletter->title,
+                $newsletter->text,
+                $newsletter->document,
+                $newsletter->active,
                 time(),
-                $newsletter->getUser(),
-                $newsletter->getId()
+                $newsletter->user,
+                $newsletter->id
             );
             $smtm->execute();
             $smtm->close();
@@ -76,14 +76,14 @@ class DaoNewsletter implements IntDaoNewsletter
             $smtm->execute();
             $smtm->bind_result($id, $title, $text, $document, $active, $created ,$updated, $user);
             while ($smtm->fetch()) {
-                $newsletter->setId($id);
-                $newsletter->setTitle($title);
-                $newsletter->setText($text);
-                $newsletter->setDocument($document);
-                $newsletter->setActive($active);
-                $newsletter->setCreated($created);
-                $newsletter->setUpdated($updated);
-                $newsletter->setUser($user);
+                $newsletter->id = $id;
+                $newsletter->title = $title;
+                $newsletter->text = $text;
+                $newsletter->document = $document;
+                $newsletter->active = $active;
+                $newsletter->created = $created;
+                $newsletter->updated = $updated;
+                $newsletter->user = $user;
             }
             $db->mysqli->close();
         }
@@ -98,14 +98,14 @@ class DaoNewsletter implements IntDaoNewsletter
             $smtm->bind_result($id, $title, $text, $document, $active, $created ,$updated, $user);
             while ($smtm->fetch()) {
                 $newsletter = new newsletter();
-                $newsletter->setId($id);
-                $newsletter->setTitle($title);
-                $newsletter->setText($text);
-                $newsletter->setDocument($document);;
-                $newsletter->setActive($active);
-                $newsletter->setCreated($created);
-                $newsletter->setUpdated($updated);
-                $newsletter->setUser($user);
+                $newsletter->id = $id;
+                $newsletter->title = $title;
+                $newsletter->text = $text;
+                $newsletter->document = $document;
+                $newsletter->active = $active;
+                $newsletter->created = $created;
+                $newsletter->updated = $updated;
+                $newsletter->user = $user;
                 array_push($entries, $newsletter);
             }
             $db->mysqli->close();

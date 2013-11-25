@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2012-12-28 14:19:00
+<?php /* Smarty version Smarty-3.1.8, created on 2013-06-15 17:50:23
          compiled from "../1.2/shared/controllers/general/templates/menu-rights.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:85592702450dc80441b4910-08017407%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c3951a9092a9603024931fd843c8bb096fdf422e' => 
     array (
       0 => '../1.2/shared/controllers/general/templates/menu-rights.tpl',
-      1 => 1356700736,
+      1 => 1371311310,
       2 => 'file',
     ),
   ),
@@ -43,7 +43,9 @@ teams/" title="Teams">Teams</a></li>
 <?php }?>
 <?php if (Rights::catalog){?>
     <li><a href="<?php echo smarty_modifier_replace($_smarty_tpl->tpl_vars['SCRIPT_NAME']->value,'index.php','');?>
-catalog/" title="Nieuws">Catalogus</a></li>
+catalog/" title="<?php echo @catalog_title;?>
+"><?php echo @catalog_title;?>
+</a></li>
 <?php }?>
 <?php if (Rights::news){?>
     <li><a href="<?php echo smarty_modifier_replace($_smarty_tpl->tpl_vars['SCRIPT_NAME']->value,'index.php','');?>
@@ -54,6 +56,18 @@ news/" title="Nieuws">Nieuws</a></li>
 newsletter/" title="Nieuwsbrieven">Nieuwsbrieven</a></li>
 <?php }?>
 <?php if (Rights::newsletterPlus){?>
-    <li><a href="<?php echo smarty_modifier_replace($_smarty_tpl->tpl_vars['SCRIPT_NAME']->value,'index.php','');?>
+    <li class="dropdown">
+        <a data-toggle="dropdown" class="dropdown-toggle" href="#">Nieuwsbrieven <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+            <li><a href="<?php echo smarty_modifier_replace($_smarty_tpl->tpl_vars['SCRIPT_NAME']->value,'index.php','');?>
 newsletter-plus/" title="Nieuwsbrieven">Nieuwsbrieven</a></li>
+            <li class="divider"></li>
+            <li><a href="<?php echo smarty_modifier_replace($_smarty_tpl->tpl_vars['SCRIPT_NAME']->value,'index.php','');?>
+newsletter-plus/subscribers/" title="Aanmeldingen">Aanmeldingen</a></li>
+        </ul>
+    </li>
+<?php }?>
+<?php if (Rights::notes){?>
+<li><a href="<?php echo smarty_modifier_replace($_smarty_tpl->tpl_vars['SCRIPT_NAME']->value,'index.php','');?>
+note/" title="Notities">Notities</a></li>
 <?php }?><?php }} ?>

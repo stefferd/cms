@@ -23,6 +23,14 @@ class ProfileController {
 
     }
 
+    public static function getFullname($id) {
+        $profile = new Profile();
+        $daoprofile = new DaoProfile();
+        $daoprofile->get($profile, $id);
+
+        return $profile->getName() . ' ' . $profile->getLastname();
+    }
+
     public function login($formvars = array()) {
         $this->tpl->assign('post', $formvars);
         $this->tpl->assign('error', $this->error);

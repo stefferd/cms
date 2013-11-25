@@ -21,48 +21,6 @@ class NewsController {
         $this->daonews = new DaoNews();
     }
 
-    public function save($formvars = array()) {
-        $this->news->setTitle(trim($formvars['title']));
-        $this->news->setText($formvars['text']);
-        $active = ($formvars['active'] == 'on') ? 1 : 0;
-        $this->news->setActive($active);
-
-        $this->daonews->save($this->news);
-    }
-
-    public function update($formvars = array(), $id) {
-        $this->news->setTitle(trim($formvars['title']));
-        $this->news->setText($formvars['text']);;
-        $active = ($formvars['active'] == 'on') ? 1 : 0;
-        $this->news->setActive($active);
-        $this->news->setId($id);
-
-        $this->daonews->update($this->news);
-    }
-
-    public function view() {
-        $this->tpl->assignByRef('daonews', $this->daonews);
-        $this->tpl->display('overview.tpl');
-    }
-
-    public function remove($id) {
-        return $this->daonews->delete($id);
-    }
-
-    public function create($formvars = array()) {
-        $this->tpl->assign('post', $formvars);
-        $this->tpl->assign('error', $this->error);
-        $this->tpl->display('form.tpl');
-    }
-
-    public function edit($formvars = array(), $id) {
-        $this->daonews->get($this->news, $id);
-        $this->tpl->assign('post', $formvars);
-        $this->tpl->assignByRef('news', $this->news);
-        $this->tpl->assign('error', $this->error);
-        $this->tpl->display('edit.tpl');
-    }
-
     public function getEntries($max = 0) {
         return $this->daonews->getEntries($max);
     }

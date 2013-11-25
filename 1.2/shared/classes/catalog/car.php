@@ -17,9 +17,12 @@ class Car extends CatItem
     protected $price;
     protected $transportCostPerKm;
     protected $identifier;
+    protected $location;
+    protected $mainimage;
 
     public function Car($id = 0, $title = '', $text = '', $active = 0, $created = '', $updated = '', $user = 0,
-                        $brand = '', $type = '', $year = '', $state = '', $milage = 0, $engine = '', $transmission = 'MT', $price = 0, $transportConstPerKm = 0, $indentifier = 0)
+                        $brand = '', $type = '', $year = '', $state = '', $milage = 0, $engine = '', $transmission = 'MT',
+                        $price = 0, $transportConstPerKm = 0, $indentifier = 0, $location = "", $mainimage = "")
     {
         parent::CatItem($id, $title, $text, $active, $created, $updated, $user);
 
@@ -33,6 +36,8 @@ class Car extends CatItem
         $this->setPrice($price);
         $this->setTransportCostPerKm($transportConstPerKm);
         $this->setIdentifier($indentifier);
+        $this->setLocation($location);
+        $this->setMainimage($mainimage);
     }
 
     public function setBrand($brand) { $this->brand = $brand; }
@@ -64,5 +69,11 @@ class Car extends CatItem
 
     public function setIdentifier($identifier) { $this->identifier = $identifier; }
     public function &getIdentifier() { return $this->identifier; }
+
+    public function setLocation($location) { $this->location = $location; }
+    public function &getLocation() { return $this->location; }
+
+    public function setMainimage($mainimage) { $this->mainimage = $mainimage; }
+    public function &getMainimage() { return $this->mainimage; }
 
 }

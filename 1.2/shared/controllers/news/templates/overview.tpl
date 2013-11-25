@@ -2,7 +2,7 @@
 {function name=row level=0}
     {foreach $data as $news}
         <tr>
-            <td>{$news->getTitle()|escape}</td>
+            <td>{$news->getTitle()|escape|stripslashes}</td>
             <td>{if $news->getActive() ne 0}Actief{else}Niet-actief{/if}</td>
             <td>{$news->getCreated()|date_format:"%d-%m-%Y"}</td>
             <td>{$news->getUpdated()|date_format:"%d-%m-%Y"}</td>

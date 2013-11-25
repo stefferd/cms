@@ -5,15 +5,16 @@
  * Date: 09-04-12
  * Time: 11:38
  */
-define('host', 'localhost');
+define('host', '195.211.72.9');
 define('username', 'deb33946_cwad');
 define('password', 'Cl@s201212271632');
 define('database', 'deb33946_cw');
 
 define('cms', 'http://www.mmcms.net/cw/');
 define('controllers', 'controllers/');
-
-define('url', 'http://www.mmcms.net/cw-website/');
+/*define('url', 'http://www.mmcms.net/cw-website/');*/
+define('url', 'http://www.classics-world.com/');
+if (!defined('root')) { define('root', '//home74b/sub002/sc42553-XVBT/classics-world.com/'); }
 define('theme', 'theme/default/');
 define('version', '1.2');
 
@@ -45,3 +46,12 @@ define('guestbook_controller', controllers . 'guestbook/');
 
 define('spam_class', classes . 'spam/');
 define('spam_controller', controllers . 'spam/');
+
+define('catalog_class', classes . 'catalog/');
+define('catalog_controller', controllers . 'catalog/');
+
+define('newsletterplus_class', classes . 'newsletterplus/');
+define('newsletterplus_controller', controllers . 'newsletterplus/');
+
+// Get the root execute this line
+//echo $_SERVER['DOCUMENT_ROOT'];

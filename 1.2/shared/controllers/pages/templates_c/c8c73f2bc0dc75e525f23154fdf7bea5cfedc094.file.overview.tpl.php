@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2012-12-28 15:13:17
+<?php /* Smarty version Smarty-3.1.8, created on 2013-01-11 20:55:08
          compiled from "../1.2/shared/controllers/pages/templates/overview.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:189001554550255cac34ead9-65824046%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c8c73f2bc0dc75e525f23154fdf7bea5cfedc094' => 
     array (
       0 => '../1.2/shared/controllers/pages/templates/overview.tpl',
-      1 => 1356703994,
+      1 => 1357857390,
       2 => 'file',
     ),
   ),
@@ -65,9 +65,9 @@ $_smarty_tpl->tpl_vars['page']->_loop = true;
         <td><a href="<?php echo smarty_modifier_replace($_smarty_tpl->tpl_vars['SCRIPT_NAME']->value,'index.php','');?>
 pages/edit/<?php echo $_smarty_tpl->tpl_vars['page']->value->getId();?>
 /" title="Bewerken" class="btn btn-mini"><i class="icon-edit"></i> Bewerken</a></td>
-        <td><a href="<?php echo smarty_modifier_replace($_smarty_tpl->tpl_vars['SCRIPT_NAME']->value,'index.php','');?>
+        <!--<td><a href="<?php echo smarty_modifier_replace($_smarty_tpl->tpl_vars['SCRIPT_NAME']->value,'index.php','');?>
 pages/delete/<?php echo $_smarty_tpl->tpl_vars['page']->value->getId();?>
-/" title="Verwijderen" class="btn btn-mini btn-danger"><i class="icon-trash icon-white"></i> Verwijderen</a></td>
+/" title="Verwijderen" class="btn btn-mini btn-danger"><i class="icon-trash icon-white"></i> Verwijderen</a></td>-->
     </tr>
         <?php $_smarty_tpl->tpl_vars['children'] = new Smarty_variable($_smarty_tpl->tpl_vars['daopage']->value->getChildren($_smarty_tpl->tpl_vars['page']->value->getId()), null, 0);?>
         <?php $_smarty_tpl->tpl_vars['count'] = new Smarty_variable(count($_smarty_tpl->tpl_vars['children']->value), null, 0);?>

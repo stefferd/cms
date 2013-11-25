@@ -6,7 +6,7 @@
     <ul class="news">
     {foreach $data as $news}
         <li>
-            <div>{$news->getText()}</div>
+            <div>{$news->text}</div>
         </li>
         {counter}
     {/foreach}

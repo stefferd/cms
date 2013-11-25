@@ -29,24 +29,24 @@ class DaoTeam implements IntDaoTeam
     public function save(Team $team)
     {
         $this->checkTableIsPresent();
-        $team->setId($this->getMaxId());
+        $team->id  = $this->getMaxId();
 
         $db = new Db();
         if ($smtm = $db->mysqli->prepare('INSERT INTO team SET id = ?, title = ?, text = ?, picture = ?, active = ?, created = ?, user = ?')) {
             $smtm->bind_param('isssisi',
-                $team->getId(),
-                $team->getTitle(),
-                $team->getText(),
-                $team->getPicture(),
-                $team->getActive(),
+                $team->id,
+                $team->title,
+                $team->text,
+                $team->picture,
+                $team->active,
                 time(),
-                $team->getUser()
+                $team->user
             );
             $smtm->execute();
             $smtm->close();
         }
         $db->mysqli->close();
-        return $team->getId();
+        return $team->id;
     }
 
     public function update(Team $team)
@@ -54,13 +54,13 @@ class DaoTeam implements IntDaoTeam
         $db = new Db();
         if ($smtm = $db->mysqli->prepare('UPDATE team SET title = ?, text = ?, picture = ?, active = ?, updated = ?, user = ? WHERE id = ?')) {
             $smtm->bind_param('sssisii',
-                $team->getTitle(),
-                $team->getText(),
-                $team->getPicture(),
-                $team->getActive(),
+                $team->title,
+                $team->text,
+                $team->picture,
+                $team->active,
                 time(),
-                $team->getUser(),
-                $team->getId()
+                $team->user,
+                $team->id
             );
             $smtm->execute();
             $smtm->close();
@@ -76,14 +76,14 @@ class DaoTeam implements IntDaoTeam
             $smtm->execute();
             $smtm->bind_result($id, $title, $text, $picture, $active, $created ,$updated, $user);
             while ($smtm->fetch()) {
-                $team->setId($id);
-                $team->setTitle($title);
-                $team->setText($text);
-                $team->setPicture($picture);
-                $team->setActive($active);
-                $team->setCreated($created);
-                $team->setUpdated($updated);
-                $team->setUser($user);
+                $team->id = $id;
+                $team->title = $title;
+                $team->text = $text;
+                $team->picture = $picture;
+                $team->active = $active;
+                $team->created = $created;
+                $team->updated = $updated;
+                $team->user = $user;
             }
             $db->mysqli->close();
         }
@@ -98,14 +98,14 @@ class DaoTeam implements IntDaoTeam
             $smtm->bind_result($id, $title, $text, $picture, $active, $created ,$updated, $user);
             while ($smtm->fetch()) {
                 $team = new Team();
-                $team->setId($id);
-                $team->setTitle($title);
-                $team->setText($text);
-                $team->setPicture($picture);;
-                $team->setActive($active);
-                $team->setCreated($created);
-                $team->setUpdated($updated);
-                $team->setUser($user);
+                $team->id = $id;
+                $team->title = $title;
+                $team->text = $text;
+                $team->picture = $picture;
+                $team->active = $active;
+                $team->created = $created;
+                $team->updated = $updated;
+                $team->user = $user;
                 array_push($entries, $team);
             }
             $db->mysqli->close();

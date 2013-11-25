@@ -17,21 +17,21 @@ class DaoSpam implements IntDaoSpam
     public function save(Spam $spam)
     {
         $this->checkTableIsPresent();
-        $spam->setId($this->getMaxId());
+        $spam->id  = $this->getMaxId();
 
         $db = new Db();
         if ($smtm = $db->mysqli->prepare('INSERT INTO spam SET id = ?, ipaddress = ?, text = ?, created = ?')) {
             $smtm->bind_param('isss',
-                $spam->getId(),
-                $spam->getIpaddress(),
-                $spam->getText(),
+                $spam->id,
+                $spam->ipaddress,
+                $spam->text,
                 time()
             );
             $smtm->execute();
             $smtm->close();
         }
         $db->mysqli->close();
-        return $spam->getId();
+        return $spam->id;
     }
 
     /* Private functions */

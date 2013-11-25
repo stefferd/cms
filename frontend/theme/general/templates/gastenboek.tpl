@@ -4,8 +4,8 @@
 <ul class="guestbook">
     {foreach $data as $entry}
         <li>
-            <div class="header">{$entry->getTitle()|escape} - {$entry->getCreated()|date_format:"%d-%m-%Y"}</div>
-            <div class="message">{$entry->getText()}</div>
+            <div class="header">{$entry->title|escape} - {$entry->created|date_format:"%d-%m-%Y"}</div>
+            <div class="message">{$entry->text}</div>
         </li>
         {counter}
     {/foreach}

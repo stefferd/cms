@@ -8,7 +8,7 @@
         <td>{$page->getCreated()|date_format:"%d-%m-%Y"}</td>
         <td>{$page->getUpdated()|date_format:"%d-%m-%Y"}</td>
         <td><a href="{$SCRIPT_NAME|replace:'index.php':''}pages/edit/{$page->getId()}/" title="Bewerken" class="btn btn-mini"><i class="icon-edit"></i> Bewerken</a></td>
-        <td><a href="{$SCRIPT_NAME|replace:'index.php':''}pages/delete/{$page->getId()}/" title="Verwijderen" class="btn btn-mini btn-danger"><i class="icon-trash icon-white"></i> Verwijderen</a></td>
+        <!--<td><a href="{$SCRIPT_NAME|replace:'index.php':''}pages/delete/{$page->getId()}/" title="Verwijderen" class="btn btn-mini btn-danger"><i class="icon-trash icon-white"></i> Verwijderen</a></td>-->
     </tr>
         {$children = $daopage->getChildren($page->getId())}
         {assign var=count value=$children|@count}

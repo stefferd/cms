@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2012-12-28 15:21:21
+<?php /* Smarty version Smarty-3.1.8, created on 2013-01-16 01:33:24
          compiled from "../1.2/shared/controllers/news/templates/overview.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:461099706503699b665d592-18787871%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '43008dc58644f084000ea053edc847857add45ab' => 
     array (
       0 => '../1.2/shared/controllers/news/templates/overview.tpl',
-      1 => 1356704476,
+      1 => 1358296400,
       2 => 'file',
     ),
   ),
@@ -49,7 +49,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['news']->key => $_smarty_tpl->tpl_vars
 $_smarty_tpl->tpl_vars['news']->_loop = true;
 ?>
         <tr>
-            <td><?php echo htmlspecialchars($_smarty_tpl->tpl_vars['news']->value->getTitle(), ENT_QUOTES, 'UTF-8', true);?>
+            <td><?php echo stripslashes(htmlspecialchars($_smarty_tpl->tpl_vars['news']->value->getTitle(), ENT_QUOTES, 'UTF-8', true));?>
 </td>
             <td><?php if ($_smarty_tpl->tpl_vars['news']->value->getActive()!=0){?>Actief<?php }else{ ?>Niet-actief<?php }?></td>
             <td><?php echo smarty_modifier_date_format($_smarty_tpl->tpl_vars['news']->value->getCreated(),"%d-%m-%Y");?>
