@@ -198,7 +198,7 @@ CREATE TABLE IF NOT EXISTS `profile` (
 --
 
 INSERT INTO `profile` (`id`, `name`, `lastname`, `emailaddress`, `password`, `birthday`, `created`, `updated`, `loggedin`, `active`) VALUES
-(1, 'Stef', 'van den Berg', 'stefvdberg', '098f6bcd4621d373cade4e832627b4f6', NULL, NULL, NULL, NULL, 1);
+(1, 'John', 'Doe', 'JohnDoe', '098f6bcd4621d373cade4e832627b4f6', NULL, NULL, NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
